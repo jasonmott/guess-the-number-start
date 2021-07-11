@@ -10,29 +10,31 @@ n = random.randint(1,100)
 def compare(user_choice):
   print(n)
   if n > user_choice:
-    return "Too low.\nGuess Again."
+    return "Too low."
   elif n < user_choice:
-    return "Too high.\nGuess Again."
+    return "Too high."
   else:
     return "same"
 
 #while is_game_over == False:
 if level_of_difficulty == "easy":
-#  print("You have 10 attempts remaining to guess the number.")
   number_of_tries = 10
 else:
-#  print("You have 5 attempts remaining to guess the number.")
   number_of_tries = 5
-while number_of_tries != 0 or is_game_over == False:
+while is_game_over == False and number_of_tries != 0:
   print(f"You have {number_of_tries} attempts remaining to guess the number.")
+  number_of_tries -= 1
   user_guess = int(input("Make a guess: "))
   guess_result = compare(user_guess)
-  if guess_result == "same":
+  if guess_result != "same" and number_of_tries !=0:
+    print(guess_result)
+    print("Guess Again.")
+  elif guess_result == "same":
     print(f"You got it! The number was {n}!")
     is_game_over = True
-  else:
+  elif number_of_tries == 0:
     print(guess_result)
-  number_of_tries -= 1
+    print("You've run out of guesses, you lose.")
 
 
 
