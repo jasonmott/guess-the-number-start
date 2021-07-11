@@ -1,5 +1,6 @@
 import random
-
+from art import logo
+print(logo)
 is_game_over = False
 
 #print(logo)
@@ -16,7 +17,6 @@ def compare(user_choice):
   else:
     return "same"
 
-#while is_game_over == False:
 if level_of_difficulty == "easy":
   number_of_tries = 10
 else:
